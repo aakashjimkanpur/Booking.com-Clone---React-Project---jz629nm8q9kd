@@ -4,13 +4,21 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { FaUser } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 const Mynavbar = () => {
-  console.log("hello navBar");
+  const navigate = useNavigate();
   return (
     <>
       <Navbar collapseOnSelect bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home" className="link-primary">
+          <Navbar.Brand
+            onClick={() => {
+              navigate("/", { state: { id: 1, name: "Akash" } });
+            }}
+            href="/"
+            className="link-primary"
+          >
             <h4>Booking.com</h4>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -19,10 +27,20 @@ const Mynavbar = () => {
             className="justify-content-end"
           >
             <Nav>
-              <Nav.Link href="stays" style={{ fontSize: "20px" }}>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/stays", { state: { id: 1, name: "Akash" } });
+                }}
+                style={{ fontSize: "20px" }}
+              >
                 Stays
               </Nav.Link>
-              <Nav.Link href="#Flight" style={{ fontSize: "20px" }}>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/flights", { state: { id: 1, name: "Akash" } });
+                }}
+                style={{ fontSize: "20px" }}
+              >
                 Flight
               </Nav.Link>
               <Nav.Link href="#User" style={{ fontSize: "20px" }}>

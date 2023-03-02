@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import "../style/view.css";
+import "../styles/view.css";
 import Button from "react-bootstrap/Button";
 const Showhotel = (prop) => {
   console.log("details", prop.hotelDetail);

@@ -20,8 +20,9 @@
     "react-bootstrap": "^2.7.2",
     "react-dom": "^16.13.1",
     "react-hot-toast": "^2.4.0",
+    "react-icon": "^1.0.0",
     "react-icons": "^4.7.1",
-    "react-router-dom": "^6.8.1"
+    "react-router-dom": "^6.8.2"
   },
   "jest": {
     "moduleNameMapper": {

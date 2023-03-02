@@ -1,25 +1,21 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "../styles/App.css";
-// import Allhotels from "./Allhotels";
 import Hotelsearch from "./Hotelsearch";
 import Mynavbar from "./Mynavbar";
-
+import Flightsearch from "../components/Flightsearch";
 const App = () => {
-  useEffect(() => {
-    console.log("Use Effect");
-  }, []);
   return (
     <div id="main">
       <>
-        <Mynavbar />
-        {/* <Hotelsearch /> */}
-        {/* <Allhotels /> */}
-        {/* <BrowserRouter>
+        <BrowserRouter>
+          <Mynavbar />
           <Routes>
+            <Route path="/" element={<Hotelsearch />} />
             <Route path="/stays" element={<Hotelsearch />} />
+            <Route path="/flights" element={<Flightsearch />} />
           </Routes>
-        </BrowserRouter> */}
+        </BrowserRouter>
       </>
     </div>
   );
