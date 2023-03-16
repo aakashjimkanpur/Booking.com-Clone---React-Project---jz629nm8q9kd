@@ -2,8 +2,28 @@ import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import "../styles/view.css";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
+
 const Showhotel = (prop) => {
-  console.log("details", prop.hotelDetail);
+  const navigate = useNavigate();
+  // console.log("details", prop.hotelDetail);
+  function checkOut() {
+    try {
+      let user = window.localStorage.getItem("LoginUser");
+      user = JSON.parse(user);
+      if (!user || !user.isLogin) {
+        toast.error("Please Login First");
+        navigate("/login");
+      } else {
+        navigate("/checkout", {
+          state: { Price: prop.hotelDetail.price_per_night },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Container>
       <div className="view border border-dark">
@@ -36,7 +56,9 @@ const Showhotel = (prop) => {
           <div className="col-4">{prop.hotelDetail.guests}</div>
         </div>
         <div className="m-3 d-flex justify-content-end">
-          <Button variant="secondary">Book</Button>
+          <Button onClick={checkOut} variant="secondary">
+            Book
+          </Button>
         </div>
       </div>
     </Container>

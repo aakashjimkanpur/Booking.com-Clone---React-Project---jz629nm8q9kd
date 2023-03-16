@@ -2,8 +2,26 @@ import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import "../styles/view.css";
 import Button from "react-bootstrap/Button";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const ShowFlight = (prop) => {
+  const navigate = useNavigate();
+  function checkOut() {
+    try {
+      let user = window.localStorage.getItem("LoginUser");
+      user = JSON.parse(user);
+      if (!user || !user.isLogin) {
+        toast.error("Please Login First");
+        navigate("/login");
+      } else
+        navigate("/checkout", {
+          state: { Price: prop.flightDetail.price },
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <Container>
       <div className="view border border-dark">
@@ -42,7 +60,9 @@ const ShowFlight = (prop) => {
           <div className="col-4">{prop.flightDetail.duration}</div>
         </div>
         <div className="m-3 d-flex justify-content-end">
-          <Button variant="secondary">Book</Button>
+          <Button onClick={checkOut} variant="secondary">
+            Book
+          </Button>
         </div>
       </div>
     </Container>
